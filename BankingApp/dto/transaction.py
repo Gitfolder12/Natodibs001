@@ -14,5 +14,3 @@ class TransactionCreate(BaseModel):
     amount: int
     type: TransactionTypeEnum
     description: str
-    
-   

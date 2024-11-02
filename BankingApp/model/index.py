@@ -6,16 +6,11 @@ from model.user import User # type: ignore
 
 def create_tables(db: PostgresqlExtDatabase):
     if is_connection_active(db):
-        print("Connection is active. Creating tables if they don't exist...")
-        
-        tables = [User, Transaction, Account]
-        
-        for table in tables:
-            if not db.table_exists(table._meta.table_name):
-                print(f"Table {table._meta.table_name} does not exist. Creating...")
-                db.create_tables([table], safe=True)
+        print("Connection is active. Creating tables...")
+        tables = [User,Account,Transaction]
+        db.create_tables(tables, safe=True)
     else:
-        print("Connection is not active. Cannot create tables.")
+        print("Connection is not active. Cannot create tables.")
 
 def is_connection_active(db: PostgresqlExtDatabase) -> bool:
     try:
