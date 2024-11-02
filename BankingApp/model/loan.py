@@ -9,8 +9,8 @@ class Loan(Model):
     id = AutoField()
     user_id = IntegerField()
     loan_amount = DecimalField(max_digits=10, decimal_places=2)
-    interest_rate = DecimalField(max_digits=5, decimal_places=2)  # Annual interest rate in percent
-    term_years = IntegerField()  # Loan term in years
+    interest_rate = DecimalField(max_digits=5, decimal_places=2)  
+    term_years = IntegerField()  
     date_taken = DateField(default=datetime.now)
     loan_balance = DecimalField(max_digits=10, decimal_places=2)
 
@@ -32,7 +32,7 @@ class Loan(Model):
             total_deposits = (Transaction
                               .select(fn.SUM(Transaction.amount))
                               .where((Transaction.type == 'deposit') & 
-                                     (Transaction.user_id == loan_data.user_id))  # Use `user_id` here
+                                     (Transaction.user_id == loan_data.user_id))  
                               .scalar() or 0.0)
 
             # Debugging output for total deposits

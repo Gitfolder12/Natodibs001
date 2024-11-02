@@ -11,8 +11,7 @@ async def create_loan(loan: LoanCreate):
         # Attempt to grant a loan by calling the class method
         new_loan = Loan.grant_loan(loan)
 
-        # No need to check for None, as grant_loan will raise an HTTPException on failure
-        return new_loan  # Assuming new_loan is already in dictionary format
+        return new_loan  
 
     except HTTPException as http_exc:
         # Re-raise the HTTPException for errors related to the loan process
