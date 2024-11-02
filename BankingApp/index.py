@@ -2,16 +2,9 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from connection.index import db
 from model.index import create_tables
+from model.loan import Loan
 from routes.index import register_routers
-from model.transaction import Transaction
-from model.user import User
-from model.account import Account
 
-
-def create_tables(db):
-    with db:
-         db.create_tables([User,Transaction,Account], safe=True) 
-        
         
 # Defining the lifespan context manager
 @asynccontextmanager

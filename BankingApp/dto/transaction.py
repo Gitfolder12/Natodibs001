@@ -10,7 +10,9 @@ class TransactionTypeEnum(Enum):
     DEPOSIT = 'deposit'
     
 class TransactionCreate(BaseModel):
-    user: int
+    user_id: int
     amount: int
     type: TransactionTypeEnum
     description: str
+    
+   

@@ -39,5 +39,6 @@ class Transaction(peewee.Model):
     description = TextField(null=True)
     class Meta:
         table_name = "transaction"
+        
 
 
