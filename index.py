@@ -2,8 +2,9 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from connection.index import db
 from model.index import create_tables
+from model.loan import Loan
 from routes.index import register_routers
-        
+
         
 # Defining the lifespan context manager
 @asynccontextmanager

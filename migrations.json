@@ -5,6 +5,7 @@
   "models": [
     "model.user.User",
     "model.transaction.Transaction",
-    "model.account.Account"
+    "model.account.Account",
+    "model.loan.Loan"
   ]
 }
