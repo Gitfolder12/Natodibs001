@@ -5,9 +5,10 @@ from datetime import datetime
 from dto.loan import LoanCreate
 from model.transaction import Transaction
 
+
 class Loan(Model):
     id = AutoField()
-    user_id = IntegerField()
+    user = IntegerField()
     loan_amount = DecimalField(max_digits=10, decimal_places=2)
     interest_rate = DecimalField(max_digits=5, decimal_places=2)  
     term_years = IntegerField()  
@@ -31,12 +32,11 @@ class Loan(Model):
             # Calculate the total deposits for the user
             total_deposits = (Transaction
                               .select(fn.SUM(Transaction.amount))
-                              .where((Transaction.type == 'deposit') & 
-                                     (Transaction.user_id == loan_data.user_id))  
+                              .where((Transaction.type == 'deposit') &  (Transaction.user_id == loan_data.user))  
                               .scalar() or 0.0)
 
-            # Debugging output for total deposits
-            print(f"Total deposits for user {loan_data.user_id}: {total_deposits}")
+            # # Debugging output for total deposits
+            print(f"Total deposits for user {loan_data.user}: {total_deposits}")
             
             # Check if deposits meet or exceed the loan amount
             if total_deposits >= loan_data.loan_amount:
