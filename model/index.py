@@ -1,6 +1,7 @@
 from sqlite3 import OperationalError
 from playhouse.postgres_ext import PostgresqlExtDatabase
 from model.account import Account
+from model.loan import Loan
 from model.transaction import Transaction
 from model.user import User # type: ignore
 
@@ -8,7 +9,7 @@ def create_tables(db: PostgresqlExtDatabase):
     if is_connection_active(db):
         print("Connection is active. Creating tables if they don't exist...")
         
-        tables = [User, Transaction, Account]
+        tables = [User, Transaction,Loan, Account]
         
         for table in tables:
             if not db.table_exists(table._meta.table_name):

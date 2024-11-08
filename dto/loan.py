@@ -2,12 +2,15 @@
 
 # Pydantic model for loan input validation
 from decimal import Decimal
+from enum import Enum
 from pydantic import BaseModel
 
-class LoanCreate(BaseModel):
-    user_id: int
-    loan_amount: Decimal
-    interest_rate: Decimal
-    term_years: int
-    loan_balance: int
+# Enum for transaction types
+class LoanStatusEnum(Enum):
+    OWING = "owing"
+    PAID  = "paid"
     
+class LoanCreate(BaseModel):
+    user: int
+    amount: Decimal
+    term_years: int

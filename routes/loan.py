@@ -4,8 +4,14 @@ from dto.loan import LoanCreate
 
 router = APIRouter()
 
+# Route to get all loan
+@router.get("/loans/", tags=["loans"])
+async def get_loans():
+    loan = Loan.find_all()  
+    return loan
+
 # Route to create a new loan
-@router.post("/loans/", response_model=Loan, tags=["loans"])
+@router.post("/loans/", tags=["loans"])
 async def create_loan(loan: LoanCreate):
     try:
         # Attempt to grant a loan by calling the class method
